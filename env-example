@@ -1,0 +1,15 @@
+# .env file
+PORT = 
+API_URL = 
+
+# DATABASE
+DB_HOST = 
+DB_PORT = 
+DB_USERNAME = 
+DB_PASSWORD = 
+DB_NAME = 
+DB_PREFIX = 
+
+# CONSTANTS
+JWT_SECRET = 
+JWT_EXPIRE = 
