@@ -1,7 +1,6 @@
 export const UserSeed = [
     {
-        username: 'admin',
+        username: 'admin@domain.com',
         password: '12345',
-        date_created: new Date().toJSON(),
     },
 ];

@@ -1,13 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { ConfigService } from '@nestjs/config';
-import { config } from 'dotenv';
+import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { TABLE_NAME } from '../../configuration/constants';
 
-config();
-
-const configService = new ConfigService();
-
-@Entity({ name: `${configService.get('DB_PREFIX')}_users` })
-export class UserEntity {
+@Entity({ name: TABLE_NAME.USER })
+export class UserEntity extends BaseEntity {
     @PrimaryGeneratedColumn({
         type: 'bigint',
         name: 'user_id',
@@ -30,18 +25,18 @@ export class UserEntity {
     })
     password: string;
 
-    @Column({
+    // Audit
+    @CreateDateColumn({
         nullable: false,
         type: 'timestamp',
-        comment: 'Date created',
+        comment: 'Date created'
     })
     date_created: Date;
 
-    @Column({
-        nullable: true,
+    @UpdateDateColumn({
+        nullable: false,
         type: 'timestamp',
-        default: null,
-        comment: 'Date updated',
+        comment: 'Date updated'
     })
     date_updated: Date;
 }
