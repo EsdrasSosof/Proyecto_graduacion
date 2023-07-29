@@ -6,7 +6,7 @@ import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { JwtModule } from '@nestjs/jwt';
-import { constants } from './configuration/constants';
+import { CONSTANTS } from './configuration/constants';
 
 @Module({
   imports: [
@@ -15,8 +15,8 @@ import { constants } from './configuration/constants';
     }),
     JwtModule.register({
       global: true,
-      secret: constants.secret,
-      signOptions: { expiresIn: constants.expire },
+      secret: CONSTANTS.SECRET,
+      signOptions: { expiresIn: CONSTANTS.EXPIRE },
     }),
     DatabaseModule,
     AuthModule,

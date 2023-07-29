@@ -1,40 +1,63 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { plainToInstance } from 'class-transformer';
 import { Repository } from 'typeorm';
 import { UserEntity } from '../entities';
+import { ReadUserDto, AuthUserDto } from '../dto/';
 
 @Injectable()
 export class UserRepository {
     constructor(
         @InjectRepository(UserEntity)
         private usersRepository: Repository<UserEntity>,
-    ) {}
+    ) { }
 
-    async create(user: Partial<UserEntity>): Promise<UserEntity> {
+    async create(user: Partial<UserEntity>): Promise<ReadUserDto> {
+        // Validate if user exist
+        const exists = await this.usersRepository.findOne({
+            where: [
+                { username: user.username },
+            ],
+        });
+
+        if (exists !== null) { // Exists
+            throw new HttpException(`El usuario ya esta registrado`, HttpStatus.CONFLICT);
+        }
+
         const newUser = this.usersRepository.create(user);
-        return this.usersRepository.save(newUser);
+        const response = await this.usersRepository.save(newUser);
+
+        return plainToInstance(ReadUserDto, response);
     }
 
-    async findAll(): Promise<UserEntity[]> {
-        return await this.usersRepository.find();
+    async findAll(): Promise<ReadUserDto[]> {
+        const response = await this.usersRepository.find();
+
+        return plainToInstance(ReadUserDto, response);
     }
 
-    findOne(user_id: number): Promise<UserEntity | null> {
-        return this.usersRepository.findOneBy({ user_id });
+    async findOne(user_id: number): Promise<ReadUserDto | null> {
+        const response = await this.usersRepository.findOneBy({ user_id });
+
+        return plainToInstance(ReadUserDto, response);
     }
 
-    findByUserNamePassword(username: string, password: string): Promise<UserEntity | undefined> {
-        return this.usersRepository.findOne({
+    async findByUserNamePassword(username: string, password: string): Promise<AuthUserDto | undefined> {
+        const response = await this.usersRepository.findOne({
             where: [
                 { username, password },
             ],
         });
+
+        return plainToInstance(AuthUserDto, response);
     }
 
-    async update(user_id: number, user: Partial<UserEntity>): Promise<UserEntity> {
+    async update(user_id: number, user: Partial<UserEntity>): Promise<ReadUserDto> {
         await this.usersRepository.update(user_id, user);
 
-        return this.usersRepository.findOneBy({ user_id });
+        const response = await this.usersRepository.findOneBy({ user_id });
+
+        return plainToInstance(ReadUserDto, response);
     }
 
     async remove(user_id: number): Promise<void> {

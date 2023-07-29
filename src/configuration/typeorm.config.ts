@@ -16,7 +16,9 @@ export default new DataSource({
     username: configService.get('DB_USERNAME'),
     password: configService.get('DB_PASSWORD'),
     database: configService.get('DB_NAME'),
-    entities: [UserEntity],
+    entities: [
+        UserEntity,
+    ],
     migrations: [
         CreateUser1688683008413,
         SeedUser1688684470144

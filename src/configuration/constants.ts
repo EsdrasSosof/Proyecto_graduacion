@@ -4,8 +4,13 @@ import { config } from 'dotenv';
 config();
 
 const configService = new ConfigService();
+const PREFIX = configService.get('DB_PREFIX');
 
-export const constants = {
-    secret: configService.get('JWT_SECRET'),
-    expire: configService.get('JWT_EXPIRE'),
+export const CONSTANTS = {
+    SECRET: configService.get('JWT_SECRET'),
+    EXPIRE: configService.get('JWT_EXPIRE'),
 };
+
+export const TABLE_NAME = {
+    USER: `${PREFIX}_users`
+}
