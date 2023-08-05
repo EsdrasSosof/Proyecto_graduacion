@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { CONSTANTS } from './configuration/constants';
+import { DoctorsModule } from './doctors/doctors.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { CONSTANTS } from './configuration/constants';
     DatabaseModule,
     AuthModule,
     UsersModule,
+    DoctorsModule,
   ],
   controllers: [AppController],
   providers: [

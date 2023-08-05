@@ -12,5 +12,6 @@ export const CONSTANTS = {
 };
 
 export const TABLE_NAME = {
-    USER: `${PREFIX}_users`
+    USER: `${PREFIX}_users`,
+    DOCTORS: `${PREFIX}_doctors`
 }

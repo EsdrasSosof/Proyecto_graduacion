@@ -1,6 +1,6 @@
 export const UserSeed = [
     {
-        username: 'admin@domain.com',
-        password: '12345',
+        username: 'esdras@umg.com',
+        password: 'admin',
     },
 ];
