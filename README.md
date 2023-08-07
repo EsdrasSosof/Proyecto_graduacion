@@ -3,7 +3,7 @@
 ## Description
 
 Boilerplate that include:
-* TypeORM with Postgresql
+* TypeORM with Mysql
 * Basic User Entity
 * TypeORM Migration and Seed for User Entity
 * Basic CRUD of User Entity
