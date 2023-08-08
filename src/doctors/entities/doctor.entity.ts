@@ -1,18 +1,18 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { TABLE_NAME } from '../../configuration/constants';
+import { UserEntity } from '../../users/entities';
 
 @Entity({ name: TABLE_NAME.DOCTORS })
 export class DoctorEntity extends BaseEntity {
     @PrimaryGeneratedColumn({
         type: 'bigint',
-        name: 'user_id',
+        name: 'personal_id',
     })
     personal_id: number;
 
     @Column({
         nullable: false,
         type: 'bigint',
-        name: 'user_id',
         comment: 'numero_colegiado',
     })
     member_number: number;
@@ -47,4 +47,11 @@ export class DoctorEntity extends BaseEntity {
         comment: 'Date updated'
     })
     date_updated: Date;
+
+    /**
+     * RELATIONS
+     */
+    @OneToOne((type) => UserEntity, {cascade: true, eager: true})
+    @JoinColumn({ name: 'user_id' })
+    user_id: UserEntity;
 }

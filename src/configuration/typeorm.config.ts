@@ -3,11 +3,8 @@ import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
 import { UserEntity } from '../users/entities/user.entity';
 import { DoctorEntity } from '../doctors/entities';
-import { CreateUser1691376884446 } from '../database/migrations/1691376884446-CreateUser';
-import { CreateDoctors1691383289619 } from '../database/migrations/1691383289619-CreateDoctors';
-import { SeedUser1688684470144 } from '../database/seeders/1688684470144-SeedUser';
-
-
+import { CreateFactory1691464596829 } from '../database/migrations/1691464596829-CreateFactory';
+import { SeedUser1691464975987 } from '../database/seeders/1691464975987-SeedUser';
 
 
 config();
@@ -26,8 +23,7 @@ export default new DataSource({
         UserEntity,DoctorEntity, 
     ],
     migrations: [
-        CreateUser1691376884446,
-        SeedUser1688684470144,
-        CreateDoctors1691383289619
+        CreateFactory1691464596829,
+        SeedUser1691464975987
     ],
 });

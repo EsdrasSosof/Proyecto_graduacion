@@ -1,8 +1,8 @@
-import { MigrationInterface, QueryRunner } from 'typeorm';
+import { MigrationInterface, QueryRunner } from "typeorm"
 import { UserSeed } from '../factories/user.seed';
 
-export class SeedUser1688684470144 implements MigrationInterface {
-    
+export class SeedUser1691464975987 implements MigrationInterface {
+
     public async up(queryRunner: QueryRunner): Promise<void> {
         for await (const user of UserSeed) {
             const query = `
