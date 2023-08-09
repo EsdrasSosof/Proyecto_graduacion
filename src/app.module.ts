@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { CONSTANTS } from './configuration/constants';
 import { DoctorsModule } from './doctors/doctors.module';
+import { SpecializationsModule } from './specializations/specializations.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { DoctorsModule } from './doctors/doctors.module';
     AuthModule,
     UsersModule,
     DoctorsModule,
+    SpecializationsModule,
   ],
   controllers: [AppController],
   providers: [

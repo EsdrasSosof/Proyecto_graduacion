@@ -7,8 +7,8 @@ import { DoctorRepository } from './repository/doctor.repository';
 export class DoctorsService {
 
   constructor(private readonly doctorRepository: DoctorRepository) {}
-  async create(createUserDto: CreateDoctorDto) {
-    return await this.doctorRepository.create(createUserDto);
+  async create(createDoctorDto: CreateDoctorDto) {
+    return await this.doctorRepository.create(createDoctorDto);
   }
 
   async findAll() {
