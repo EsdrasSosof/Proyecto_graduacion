@@ -19,10 +19,6 @@ export class DoctorsService {
     return await this.doctorRepository.findOne(id);
   }
 
-//  async findByUserNamePassword(username: string, password: string) {
-//    return await this.doctorRepository.findByUserNamePassword(username, password);
-// }
-
   async update(id: number, updateDoctorDto: UpdateDoctorDto) {
     return await this.doctorRepository.update(id, updateDoctorDto);
   }
