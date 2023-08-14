@@ -10,6 +10,7 @@ import { CONSTANTS } from './configuration/constants';
 import { DoctorsModule } from './doctors/doctors.module';
 import { SpecializationsModule } from './specializations/specializations.module';
 import { MedPatientsModule } from './med_patients/med_patients.module';
+import { MedConsultationsModule } from './med_consultations/med_consultations.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { MedPatientsModule } from './med_patients/med_patients.module';
     DoctorsModule,
     SpecializationsModule,
     MedPatientsModule,
+    MedConsultationsModule,
   ],
   controllers: [AppController],
   providers: [
