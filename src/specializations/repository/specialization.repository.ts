@@ -26,8 +26,8 @@ export class SpecializationRepository {
             throw new HttpException(`El personal ya esta registrado`, HttpStatus.CONFLICT);
         }
 
-        const newUser = this.SpecializationRepository.create(specialization);
-        const response = await this.SpecializationRepository.save(newUser);
+        const newSpeciality = this.SpecializationRepository.create(specialization);
+        const response = await this.SpecializationRepository.save(newSpeciality);
 
         return plainToInstance(CreateSpecializationDto, response);
     }

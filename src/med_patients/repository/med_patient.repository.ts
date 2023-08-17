@@ -25,8 +25,8 @@ export class MedPatientRepository {
             throw new HttpException(`El personal ya esta registrado`, HttpStatus.CONFLICT);
         }
 
-        const newUser = this.MedPatientRepository.create(patient);
-        const response = await this.MedPatientRepository.save(newUser);
+        const newPatient = this.MedPatientRepository.create(patient);
+        const response = await this.MedPatientRepository.save(newPatient);
 
         return plainToInstance(CreateMedPatientDto, response);
     }

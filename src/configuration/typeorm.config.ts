@@ -6,9 +6,11 @@ import { DoctorEntity } from '../doctors/entities';
 import { SpecializationEntity } from '../specializations/entities';
 import { MedPatientEntity } from '../med_patients/entities';
 import { MedConsultationEntity } from '../med_consultations/entities';
+import { MedDiagnostictEntity } from '../med_diagnostics/entities';
 
 import { CreateFactory1691464596829 } from '../database/migrations/1691464596829-CreateFactory';
 import { SeedUser1691464975987 } from '../database/seeders/1691464975987-SeedUser';
+
 
 
 config();
@@ -24,7 +26,7 @@ export default new DataSource({
     password: configService.get('DB_PASSWORD'),
     database: configService.get('DB_NAME'),
     entities: [
-        UserEntity,DoctorEntity,SpecializationEntity,MedPatientEntity,MedConsultationEntity
+        UserEntity,DoctorEntity,SpecializationEntity,MedPatientEntity,MedConsultationEntity, MedDiagnostictEntity
     ],
     migrations: [
         CreateFactory1691464596829,

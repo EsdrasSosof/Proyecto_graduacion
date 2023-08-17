@@ -11,6 +11,7 @@ import { DoctorsModule } from './doctors/doctors.module';
 import { SpecializationsModule } from './specializations/specializations.module';
 import { MedPatientsModule } from './med_patients/med_patients.module';
 import { MedConsultationsModule } from './med_consultations/med_consultations.module';
+import { MedDiagnosticsModule } from './med_diagnostics/med_diagnostics.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { MedConsultationsModule } from './med_consultations/med_consultations.mo
     SpecializationsModule,
     MedPatientsModule,
     MedConsultationsModule,
+    MedDiagnosticsModule,
   ],
   controllers: [AppController],
   providers: [
