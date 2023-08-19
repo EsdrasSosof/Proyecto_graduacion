@@ -12,6 +12,7 @@ import { SpecializationsModule } from './specializations/specializations.module'
 import { MedPatientsModule } from './med_patients/med_patients.module';
 import { MedConsultationsModule } from './med_consultations/med_consultations.module';
 import { MedDiagnosticsModule } from './med_diagnostics/med_diagnostics.module';
+import { MedRecordsModule } from './med_records/med_records.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { MedDiagnosticsModule } from './med_diagnostics/med_diagnostics.module';
     MedPatientsModule,
     MedConsultationsModule,
     MedDiagnosticsModule,
+    MedRecordsModule,
   ],
   controllers: [AppController],
   providers: [
