@@ -13,11 +13,13 @@ export class CreateFactory1691464596829 implements MigrationInterface {
         await queryRunner.query(`CREATE TABLE \`hospital_medrecords\` (\`record_id\` bigint NOT NULL AUTO_INCREMENT, \`date_created\` timestamp(6) NOT NULL COMMENT 'Date created' DEFAULT CURRENT_TIMESTAMP(6), \`date_updated\` timestamp(6) NOT NULL COMMENT 'Date updated' DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), PRIMARY KEY (\`record_id\`)) ENGINE=InnoDB`);
         await queryRunner.query(`CREATE TABLE \`hospital_medpresciptions\` (\`prescription_id\` bigint NOT NULL AUTO_INCREMENT, \`dose\` varchar(120) NOT NULL COMMENT 'dosis recetada', \`date_created\` timestamp(6) NOT NULL COMMENT 'Date created' DEFAULT CURRENT_TIMESTAMP(6), \`date_updated\` timestamp(6) NOT NULL COMMENT 'Date updated' DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), PRIMARY KEY (\`prescription_id\`)) ENGINE=InnoDB`);
         await queryRunner.query(`CREATE TABLE \`hospital_details\` (\`detail_id\` bigint NOT NULL AUTO_INCREMENT, \`date_created\` timestamp(6) NOT NULL COMMENT 'Date created' DEFAULT CURRENT_TIMESTAMP(6), \`date_updated\` timestamp(6) NOT NULL COMMENT 'Date updated' DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), PRIMARY KEY (\`detail_id\`)) ENGINE=InnoDB`);
+        await queryRunner.query(`CREATE TABLE \`hospital_medicines\` (\`medicine_id\` bigint NOT NULL AUTO_INCREMENT, \`commercial_name\` varchar(120) NOT NULL COMMENT 'dosis recetada', \`scientific_name\` varchar(120) NOT NULL COMMENT 'dosis recetada', \`date_created\` timestamp(6) NOT NULL COMMENT 'Date created' DEFAULT CURRENT_TIMESTAMP(6), \`date_updated\` timestamp(6) NOT NULL COMMENT 'Date updated' DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), PRIMARY KEY (\`medicine_id\`)) ENGINE=InnoDB`);
         await queryRunner.query(`ALTER TABLE \`hospital_doctors\` ADD CONSTRAINT \`FK_e8ec91f39d1e6621794d0d30864\` FOREIGN KEY (\`user_id\`) REFERENCES \`hospital_users\`(\`user_id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`ALTER TABLE \`hospital_doctors\` DROP FOREIGN KEY \`FK_e8ec91f39d1e6621794d0d30864\``);
+        await queryRunner.query(`DROP TABLE \`hospital_medicines\``);
         await queryRunner.query(`DROP TABLE \`hospital_details\``);
         await queryRunner.query(`DROP TABLE \`hospital_medpresciptions\``);
         await queryRunner.query(`DROP TABLE \`hospital_medrecords\``);
