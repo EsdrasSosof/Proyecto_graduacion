@@ -13,6 +13,7 @@ import { MedPatientsModule } from './med_patients/med_patients.module';
 import { MedConsultationsModule } from './med_consultations/med_consultations.module';
 import { MedDiagnosticsModule } from './med_diagnostics/med_diagnostics.module';
 import { MedRecordsModule } from './med_records/med_records.module';
+import { MedPresciptionsModule } from './med_presciptions/med_presciptions.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { MedRecordsModule } from './med_records/med_records.module';
     MedConsultationsModule,
     MedDiagnosticsModule,
     MedRecordsModule,
+    MedPresciptionsModule,
   ],
   controllers: [AppController],
   providers: [
