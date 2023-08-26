@@ -1,6 +1,7 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { TABLE_NAME } from '../../configuration/constants';
 import { UserEntity } from '../../users/entities';
+import { SpecializationEntity } from '../../specializations/entities';
 
 @Entity({ name: TABLE_NAME.DOCTORS })
 export class DoctorEntity extends BaseEntity {
@@ -48,10 +49,17 @@ export class DoctorEntity extends BaseEntity {
     })
     date_updated: Date;
 
-    /**
-     * RELATIONS
+    /*
+     * RELATIONS USER
      */
     @OneToOne((type) => UserEntity, {cascade: true, eager: true})
     @JoinColumn({ name: 'user_id' })
     user_id: UserEntity;
+
+        /*
+     * RELATIONS SPECIALIZATION
+     */
+    @OneToOne((type) => SpecializationEntity, {cascade: true, eager: true})
+    @JoinColumn({ name: 'specialization_id' })
+    specialization_id: SpecializationEntity;
 }

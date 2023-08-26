@@ -31,11 +31,4 @@ export class RoleEntity extends BaseEntity {
         comment: 'Date updated'
     })
     date_updated: Date;
-
-    /**
-     * RELATIONS
-     */
-    /**@OneToOne((type) => UserEntity, {cascade: true, eager: true})
-    @JoinColumn({ name: 'user_id' })
-    user_id: UserEntity;**/
 }

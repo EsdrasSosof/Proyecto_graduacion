@@ -15,11 +15,4 @@ export class SpecializationEntity extends BaseEntity {
         comment: 'descripción',
     })
     description: string;
-
-    /**
-     * RELATIONS
-     */
-    //@OneToOne((type) => UserEntity, {cascade: true, eager: true})
-    //@JoinColumn({ name: 'user_id' })
-    //user_id: UserEntity;
 }

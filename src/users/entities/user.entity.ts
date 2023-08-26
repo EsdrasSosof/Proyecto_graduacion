@@ -1,5 +1,6 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { TABLE_NAME } from '../../configuration/constants';
+import { RoleEntity } from '../../roles/entities';
 
 @Entity({ name: TABLE_NAME.USER })
 export class UserEntity extends BaseEntity {
@@ -39,4 +40,11 @@ export class UserEntity extends BaseEntity {
         comment: 'Date updated'
     })
     date_updated: Date;
+
+    /**
+     * RELATIONS ROLE
+     * **/
+    @ManyToOne((type) => RoleEntity, {cascade: true, eager: true})
+    @JoinColumn({ name: 'role_id' })
+    role_id: RoleEntity;
 }
