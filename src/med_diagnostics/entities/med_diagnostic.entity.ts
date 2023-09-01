@@ -51,13 +51,6 @@ export class MedDiagnostictEntity extends BaseEntity {
     date_updated: Date;
 
     /*
-     * RELATIONS DOCTOR
-     */
-    @ManyToOne((type) => DoctorEntity, {cascade: true, eager: true})
-    @JoinColumn({ name: 'member_number' })
-    member_number: DoctorEntity;
-
-    /*
      * RELATIONS MED_PRESCRIPTION
      */
     @OneToOne((type) => MedPresciptionEntity, {cascade: true, eager: true})

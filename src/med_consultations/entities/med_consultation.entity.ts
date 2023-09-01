@@ -53,8 +53,8 @@ export class MedConsultationEntity extends BaseEntity {
      * RELATIONS DOCTOR
      */
      @ManyToOne((type) => DoctorEntity, {cascade: true, eager: true})
-     @JoinColumn({ name: 'member_number' })
-     member_number: DoctorEntity;
+     @JoinColumn({ name: 'personal_id' })
+     personal_id: DoctorEntity;
 
     /*
      * RELATIONS MED_DIAGNOSTIC
