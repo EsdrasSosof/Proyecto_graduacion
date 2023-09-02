@@ -12,6 +12,7 @@ import { MedPresciptionEntity } from '../med_presciptions/entities';
 import { DetailEntity } from '../details/entities';
 import { MedicineEntity } from '../medicines/entities';
 import { RoleEntity } from '../roles/entities';
+import { TypologyEntity } from '../typologies/entities';
 
 import { CreateFactory1691464596829 } from '../database/migrations/1691464596829-CreateFactory';
 import { SeedUser1691464975987 } from '../database/seeders/1691464975987-SeedUser';
@@ -34,7 +35,7 @@ export default new DataSource({
     database: configService.get('DB_NAME'),
     entities: [
         UserEntity,DoctorEntity,SpecializationEntity,MedPatientEntity,MedConsultationEntity,MedDiagnostictEntity,MedRecordEntity,
-        MedPresciptionEntity,DetailEntity,MedicineEntity,RoleEntity
+        MedPresciptionEntity,DetailEntity,MedicineEntity,RoleEntity,TypologyEntity
     ],
     migrations: [
         CreateFactory1691464596829,

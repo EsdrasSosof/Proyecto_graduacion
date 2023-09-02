@@ -17,6 +17,7 @@ import { MedPresciptionsModule } from './med_presciptions/med_presciptions.modul
 import { DetailsModule } from './details/details.module';
 import { MedicinesModule } from './medicines/medicines.module';
 import { RolesModule } from './roles/roles.module';
+import { TypologiesModule } from './typologies/typologies.module';
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import { RolesModule } from './roles/roles.module';
     DetailsModule,
     MedicinesModule,
     RolesModule,
+    TypologiesModule,
   ],
   controllers: [AppController],
   providers: [

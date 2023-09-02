@@ -1,6 +1,7 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { TABLE_NAME } from '../../configuration/constants';
 import { RoleEntity } from '../../roles/entities';
+import { TypologyEntity } from '../../typologies/entities';
 
 @Entity({ name: TABLE_NAME.USER })
 export class UserEntity extends BaseEntity {
@@ -47,4 +48,11 @@ export class UserEntity extends BaseEntity {
     @ManyToOne((type) => RoleEntity, {cascade: true, eager: true})
     @JoinColumn({ name: 'role_id' })
     role_id: RoleEntity;
+
+    /**
+     * RELATIONS TYPOLOGIES
+     * **/
+    @ManyToOne((type) => TypologyEntity, { createForeignKeyConstraints: false, eager: true })
+    @JoinColumn({ name: 'status' })
+    status: TypologyEntity;
 }
