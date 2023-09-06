@@ -20,6 +20,13 @@ export class DoctorEntity extends BaseEntity {
 
     @Column({
         nullable: false,
+        type: 'bigint',
+        comment: 'CUI',
+    })
+    identification: number;
+
+    @Column({
+        nullable: false,
         type: 'varchar',
         length: '50',
         comment: 'nombres',
@@ -33,6 +40,36 @@ export class DoctorEntity extends BaseEntity {
         comment: 'apellidos',
     })
     lastame: string;
+    
+    @CreateDateColumn({
+        nullable: false,
+        type: 'timestamp',
+        comment: 'Fecha de nacimiento'
+    })
+    dof: Date;
+
+    @Column({
+        nullable: false,
+        type: 'varchar',
+        length: '50',
+        comment: 'dirección residencia',
+    })
+    address: string;
+
+    @Column({
+        nullable: false,
+        type: 'bigint',
+        comment: 'número de teléfono',
+    })
+    phone: number;
+
+    @Column({
+        nullable: false,
+        type: 'varchar',
+        length: '50',
+        comment: 'dirección correo',
+    })
+    email: string;
 
     // Audit
     @CreateDateColumn({
