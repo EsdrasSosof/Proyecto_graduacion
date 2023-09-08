@@ -10,6 +10,14 @@ export class DetailEntity extends BaseEntity {
     })
     detail_id: number;
 
+    @Column({
+        nullable: false,
+        type: 'varchar',
+        length: '260',
+        comment: 'descripción del detalle',
+    })
+    description: string;
+
     // Audit
     @CreateDateColumn({
         nullable: false,

@@ -25,6 +25,14 @@ export class MedicineEntity extends BaseEntity {
     })
     scientific_name: string;
 
+    @Column({
+        nullable: false,
+        type: 'varchar',
+        length: '260',
+        comment: 'descripción del detalle',
+    })
+    description: string;
+
     // Audit
     @CreateDateColumn({
         nullable: false,
