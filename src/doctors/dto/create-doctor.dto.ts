@@ -1,4 +1,4 @@
-import { IsDate, IsDateString, IsEmail, IsNotEmpty, IsNumber, IsNumberString, IsString, Length, MaxLength, MinLength, ValidationArguments } from "class-validator";
+import {IsDateString, IsEmail, IsNotEmpty, IsNumberString, IsString, Length, MaxLength, MinLength } from "class-validator";
 
 export class CreateDoctorDto {
     personal_id: number;
@@ -11,30 +11,9 @@ export class CreateDoctorDto {
       })
     @IsNotEmpty()
     @IsNumberString(undefined, { message: 'El número de colegiado debe ser una cadena numérica.' })
-    // @Length(10, 13, {
-    //   message: 'El número de colegiado debe tener de 10 a 13 caracteres caracteres.',
-    // })
     member_number: number;
 
     @IsNotEmpty()
-    // @ MinLength ( 10 ,  { 
-    //   message : ( args : ValidationArguments )  =>  { 
-    //     if  ( args . value . length  ===  1 )  { 
-    //       return  'Demasiado corto, la longitud mínima es 1 carácter' ; 
-    //     }  else  { 
-    //       return  'Demasiado corto, la longitud mínima es '  +  args.constraints [ 0 ]  +  ' caracteres' ;
-    //     } 
-    //   } , 
-    // } ) 
-    // @ MaxLength ( 13 ,  { 
-    //   message : ( args : ValidationArguments )  =>  { 
-    //     if  ( args . value . length  ===  14 )  { 
-    //       return  'Demasiado largo, la longitud máxima es 1 carácter' ; 
-    //     }  else  { 
-    //       return  'Demasiado largo, la longitud máxima es '  +  args.constraints [ 0 ]  +  ' caracteres' ;
-    //     } 
-    //   } , 
-    // } ) 
     @IsNumberString(undefined, { message: 'El número debe ser una cadena numérica.' })
     @Length(13, 13, {
       message: 'El número de identificación debe tener exactamente 13 caracteres.',
