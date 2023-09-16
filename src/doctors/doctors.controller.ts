@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { DoctorsService } from './doctors.service';
 import { CreateDoctorDto } from './dto/create-doctor.dto';
 import { UpdateDoctorDto } from './dto/update-doctor.dto';
+import { Public } from 'src/auth/auth.decorator';
 
 @Controller('doctors')
 export class DoctorsController {
@@ -12,6 +13,7 @@ export class DoctorsController {
     return this.doctorsService.create(createDoctorDto);
   }
 
+  @Public()
   @Get()
   findAll() {
     return this.doctorsService.findAll();

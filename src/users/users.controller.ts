@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from 
 import { UsersService } from './users.service';
 import { CreateUserDto, UpdateUserDto } from './dto';
 import { ApiTags } from '@nestjs/swagger';
+import { Public } from 'src/auth/auth.decorator';
 
 @ApiTags('Users')
 @Controller('users')
@@ -13,6 +14,7 @@ export class UsersController {
     return await this.usersService.create(createUserDto);
   }
 
+  @Public()
   @Get()
   async findAll() {
     return await this.usersService.findAll();
