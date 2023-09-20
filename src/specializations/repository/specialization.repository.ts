@@ -11,49 +11,50 @@ import { UpdateSpecializationDto } from '../dto/update-specialization.dto';
 export class SpecializationRepository {
     constructor(
         @InjectRepository(SpecializationEntity)
-        private SpecializationRepository: Repository<SpecializationEntity>,
+        private specializationRepository: Repository<SpecializationEntity>,
     ) { }
 
     async create(specialization: Partial<SpecializationEntity>): Promise<CreateSpecializationDto> {
         // Validate if personal exist
-        const exists = await this.SpecializationRepository.findOne({
-            where: [
-                { specialization_id: specialization.specialization_id },
-            ],
-        });
+        // const exists = await this.SpecializationRepository.findOne({
+        //     where: [
+        //         { specialization_id: specialization.specialization_id },
+        //     ],
+        // });
+        const exists = await this.specializationRepository.findOneBy({ specialization_id: specialization.specialization_id });
 
         if (exists !== null) { // Exists
             throw new HttpException(`El personal ya esta registrado`, HttpStatus.CONFLICT);
         }
 
-        const newSpeciality = this.SpecializationRepository.create(specialization);
-        const response = await this.SpecializationRepository.save(newSpeciality);
+        const newSpeciality = this.specializationRepository.create(specialization);
+        const response = await this.specializationRepository.save(newSpeciality);
 
         return plainToInstance(CreateSpecializationDto, response);
     }
 
     async findAll(): Promise<UpdateSpecializationDto[]> {
-        const response = await this.SpecializationRepository.find();
+        const response = await this.specializationRepository.find();
 
         return plainToInstance(UpdateSpecializationDto, response);
     }
 
     async findOne(specialization_id: number): Promise<UpdateSpecializationDto | null> {
-        const response = await this.SpecializationRepository.findOneBy({ specialization_id });
+        const response = await this.specializationRepository.findOneBy({ specialization_id });
 
         return plainToInstance(UpdateSpecializationDto, response);
     }
 
     async update(specialization_id: number, specialization: Partial<SpecializationEntity>): Promise<UpdateSpecializationDto> {
-        await this.SpecializationRepository.update(specialization_id, specialization);
+        await this.specializationRepository.update(specialization_id, specialization);
 
-        const response = await this.SpecializationRepository.findOneBy({ specialization_id });
+        const response = await this.specializationRepository.findOneBy({ specialization_id });
 
         return plainToInstance(UpdateSpecializationDto, response);
     }
 
     async remove(specialization_id: number): Promise<void> {
-        await this.SpecializationRepository.delete(specialization_id);
+        await this.specializationRepository.delete(specialization_id);
     }
 
 }

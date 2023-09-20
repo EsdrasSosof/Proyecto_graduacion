@@ -11,13 +11,13 @@ import { DoctorEntity } from '../entities';
 export class DoctorRepository {
     constructor(
         @InjectRepository(DoctorEntity)
-        private DoctorRepository: Repository<DoctorEntity>,
+        private doctorRepository: Repository<DoctorEntity>,
     ) { }
 
 //    async create(user: Partial<DoctorEntity>): Promise<ReadUserDto> {
     async create(medical: Partial<DoctorEntity>): Promise<CreateDoctorDto> {
         // Validate if personal exist
-        const exists = await this.DoctorRepository.findOne({
+        const exists = await this.doctorRepository.findOne({
             where: [
                 { member_number: medical.member_number },
             ],
@@ -27,34 +27,34 @@ export class DoctorRepository {
             throw new HttpException(`El personal ya esta registrado`, HttpStatus.CONFLICT);
         }
 
-        const newDoctor = this.DoctorRepository.create(medical);
-        const response = await this.DoctorRepository.save(newDoctor);
+        const newDoctor = this.doctorRepository.create(medical);
+        const response = await this.doctorRepository.save(newDoctor);
 
         return plainToInstance(CreateDoctorDto, response);
     }
 
     async findAll(): Promise<UpdateDoctorDto[]> {
-        const response = await this.DoctorRepository.find();
+        const response = await this.doctorRepository.find();
 
         return plainToInstance(UpdateDoctorDto, response);
     }
 
     async findOne(personal_id: number): Promise<UpdateDoctorDto | null> {
-        const response = await this.DoctorRepository.findOneBy({ personal_id });
+        const response = await this.doctorRepository.findOneBy({ personal_id });
 
         return plainToInstance(UpdateDoctorDto, response);
     }
 
     async update(personal_id: number, medical: Partial<DoctorEntity>): Promise<UpdateDoctorDto> {
-        await this.DoctorRepository.update(personal_id, medical);
+        await this.doctorRepository.update(personal_id, medical);
 
-        const response = await this.DoctorRepository.findOneBy({ personal_id });
+        const response = await this.doctorRepository.findOneBy({ personal_id });
 
         return plainToInstance(UpdateDoctorDto, response);
     }
 
     async remove(personal_id: number): Promise<void> {
-        await this.DoctorRepository.delete(personal_id);
+        await this.doctorRepository.delete(personal_id);
     }
 
 }

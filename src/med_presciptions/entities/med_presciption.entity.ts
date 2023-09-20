@@ -1,4 +1,4 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { TABLE_NAME } from '../../configuration/constants';
 import { DetailEntity } from '../../details/entities';
 
@@ -36,7 +36,7 @@ export class MedPresciptionEntity extends BaseEntity {
     /*
      * RELATIONS MED_DETAIL
      */
-    @OneToOne((type) => DetailEntity, {cascade: true, eager: true})
-    @JoinColumn({ name: 'detail_id' })
-    detail_id: DetailEntity;
+    // @ManyToOne((type) => DetailEntity, {cascade: true, eager: true})
+    // @JoinColumn({ name: 'detail_id' })
+    // detail_id: DetailEntity;
 }

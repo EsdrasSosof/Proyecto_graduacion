@@ -1,14 +1,20 @@
-import { IsString, MaxLength, MinLength } from "class-validator";
+import { IsNotEmpty, IsString, MaxLength } from "class-validator";
 
 export class CreateMedicineDto {
     medicine_id: number;
 
+    @IsNotEmpty({
+      message: 'El Nombre Comercial no debe estar vacío',
+    })
     @IsString()
     @MaxLength(120, {
         message: 'El máximo de caracteres es de 120',
       })
     commercial_name: string;
 
+    @IsNotEmpty({
+      message: 'El Nombre Científico no debe estar vacío',
+    })
     @IsString()
     @MaxLength(120, {
         message: 'El máximo de caracteres es de 120',
