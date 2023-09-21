@@ -1,5 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { TABLE_NAME } from '../../configuration/constants';
+import { MedPatientEntity } from '../../med_patients/entities';
 
 
 @Entity({ name: TABLE_NAME.MEDRECORD })
@@ -27,7 +28,7 @@ export class MedRecordEntity extends BaseEntity {
     /**
      * RELATIONS
      */
-    //@OneToOne((type) => UserEntity, {cascade: true, eager: true})
-    //@JoinColumn({ name: 'user_id' })
-    //user_id: UserEntity;
+    @OneToOne((type) => MedPatientEntity, {cascade: true, eager: true})
+    @JoinColumn({ name: 'patient_id' })
+    patient_id: MedPatientEntity;
 }

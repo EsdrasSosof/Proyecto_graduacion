@@ -97,7 +97,7 @@ export class MedPatientEntity extends BaseEntity {
     /**
      * RELATIONS MED_RECORD
      */
-    @OneToOne((type) => MedRecordEntity, {cascade: true, eager: true})
-    @JoinColumn({ name: 'record_id' })
-    record_id: MedRecordEntity;
+    // @OneToOne((type) => MedRecordEntity, {cascade: true, eager: true})
+    // @JoinColumn({ name: 'record_id' })
+    // record_id: MedRecordEntity;
 }

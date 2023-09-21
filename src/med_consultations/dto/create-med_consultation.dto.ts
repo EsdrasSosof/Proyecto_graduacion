@@ -2,7 +2,7 @@ import { IsDateString, IsString, MaxLength } from "class-validator";
 
 export class CreateMedConsultationDto {
     consultation_id: number;
-    correlative: number;
+    // correlative: number;
 
     @IsString()
     @MaxLength(120, {

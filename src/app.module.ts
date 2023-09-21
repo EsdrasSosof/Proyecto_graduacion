@@ -18,6 +18,7 @@ import { DetailsModule } from './details/details.module';
 import { MedicinesModule } from './medicines/medicines.module';
 import { RolesModule } from './roles/roles.module';
 import { TypologiesModule } from './typologies/typologies.module';
+import { MotivesModule } from './motives/motives.module';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { TypologiesModule } from './typologies/typologies.module';
     MedicinesModule,
     RolesModule,
     TypologiesModule,
+    MotivesModule,
   ],
   controllers: [AppController],
   providers: [

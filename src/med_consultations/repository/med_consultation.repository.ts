@@ -18,7 +18,7 @@ export class MedConsultationRepository {
         // Validate if personal exist
         const exists = await this.MedConsultationRepository.findOne({
             where: [
-                { correlative: consultation.correlative },
+                { consultation_id: consultation.consultation_id },
             ],
         });
 

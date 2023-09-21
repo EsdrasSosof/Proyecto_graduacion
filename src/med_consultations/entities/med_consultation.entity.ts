@@ -3,6 +3,7 @@ import { TABLE_NAME } from '../../configuration/constants';
 import { DoctorEntity } from '../../doctors/entities';
 import { MedDiagnostictEntity } from '../../med_diagnostics/entities';
 import { MedPatientEntity } from '../../med_patients/entities';
+import { MotiveEntity } from '../../motives/entities';
 
 
 @Entity({ name: TABLE_NAME.MEDCONSULTATION })
@@ -11,13 +12,6 @@ export class MedConsultationEntity extends BaseEntity {
         type: 'bigint',
     })
     consultation_id: number;
-
-    @Column({
-        nullable: false,
-        type: 'bigint',
-        comment: 'Correlativo de consultas',
-    })
-    correlative: number;
 
     @Column({
         nullable: false,
@@ -64,11 +58,17 @@ export class MedConsultationEntity extends BaseEntity {
     @JoinColumn({ name: 'correlative_id' })
     correlative_id: MedDiagnostictEntity;
 
-
     /**
      * RELATIONS MED_CONSULTATION
      */
     @ManyToOne((type) => MedPatientEntity, {cascade: true, eager: true})
     @JoinColumn({ name: 'patient_id' })
     patient_id: MedPatientEntity;
+
+    /**
+     * RELATIONS MED_CONSULTATION
+     */
+    @ManyToOne((type) => MotiveEntity, {cascade: true, eager: true})
+    @JoinColumn({ name: 'motive_id' })
+    motive_id: MotiveEntity;
 }

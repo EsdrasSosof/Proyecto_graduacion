@@ -23,5 +23,6 @@ export const TABLE_NAME = {
     MEDDETAIL: `${PREFIX}_details`,
     MEDMEDICINE: `${PREFIX}_medicines`,
     MEDROL: `${PREFIX}_roles`,
-    TYPOLOGIES: `${PREFIX}_typologies`
+    TYPOLOGIES: `${PREFIX}_typologies`,
+    MOTIVES: `${PREFIX}_motives`
 }

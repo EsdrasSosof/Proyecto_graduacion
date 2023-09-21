@@ -13,6 +13,7 @@ import { DetailEntity } from '../details/entities';
 import { MedicineEntity } from '../medicines/entities';
 import { RoleEntity } from '../roles/entities';
 import { TypologyEntity } from '../typologies/entities';
+import { MotiveEntity } from '../motives/entities';
 
 import { CreateFactory1691464596829 } from '../database/migrations/1691464596829-CreateFactory';
 import { SeedUser1691464975987 } from '../database/seeders/1691464975987-SeedUser';
@@ -26,7 +27,6 @@ config();
 const configService = new ConfigService();
 
 export default new DataSource({
-    //type: 'postgres',
     type: 'mysql',
     host: configService.get('DB_HOST'),
     port: configService.get('DB_PORT'),
@@ -35,7 +35,7 @@ export default new DataSource({
     database: configService.get('DB_NAME'),
     entities: [
         UserEntity,DoctorEntity,SpecializationEntity,MedPatientEntity,MedConsultationEntity,MedDiagnostictEntity,MedRecordEntity,
-        MedPresciptionEntity,DetailEntity,MedicineEntity,RoleEntity,TypologyEntity
+        MedPresciptionEntity,DetailEntity,MedicineEntity,RoleEntity,TypologyEntity,MotiveEntity
     ],
     migrations: [
         CreateFactory1691464596829,
