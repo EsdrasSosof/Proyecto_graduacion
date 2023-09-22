@@ -18,15 +18,15 @@ export class TypologyRepository {
 
     async create(typology: Partial<TypologyEntity>): Promise<CreateTypologyDto> {
         // Validate if personal exist
-        const exists = await this.TypologyRepository.findOne({
-            where: [
-                { typology_id: typology.typology_id },
-            ],
-        });
+        // const exists = await this.TypologyRepository.findOne({
+        //     where: [
+        //         { typology_id: typology.typology_id },
+        //     ],
+        // });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`La tipología ya esta registrado`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`La tipología ya esta registrado`, HttpStatus.CONFLICT);
+        // }
 
         const newTypology = this.TypologyRepository.create(typology);
         const response = await this.TypologyRepository.save(newTypology);

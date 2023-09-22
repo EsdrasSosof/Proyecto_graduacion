@@ -23,11 +23,11 @@ export class MedicineRepository {
         //     ],
         // });
 
-        const exists = await this.medicineRepository.findOneBy({ medicine_id: medicine.medicine_id });
+        // const exists = await this.medicineRepository.findOneBy({ medicine_id: medicine.medicine_id });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`El medicamento ya esta registrado`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`El medicamento ya esta registrado`, HttpStatus.CONFLICT);
+        // }
 
         const newMedicine = this.medicineRepository.create(medicine);
         const response = await this.medicineRepository.save(newMedicine);

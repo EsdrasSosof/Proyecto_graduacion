@@ -15,15 +15,15 @@ export class MedPatientRepository {
 
     async create(patient: Partial<MedPatientEntity>): Promise<CreateMedPatientDto> {
         // Validate if personal exist
-        const exists = await this.MedPatientRepository.findOne({
-            where: [
-                { identification: patient.identification },
-            ],
-        });
+        // const exists = await this.MedPatientRepository.findOne({
+        //     where: [
+        //         { identification: patient.identification },
+        //     ],
+        // });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`El personal ya esta registrado`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`El personal ya esta registrado`, HttpStatus.CONFLICT);
+        // }
 
         const newPatient = this.MedPatientRepository.create(patient);
         const response = await this.MedPatientRepository.save(newPatient);

@@ -11,50 +11,51 @@ import { UpdateMedConsultationDto } from '../dto/update-med_consultation.dto';
 export class MedConsultationRepository {
     constructor(
         @InjectRepository(MedConsultationEntity)
-        private MedConsultationRepository: Repository<MedConsultationEntity>,
+        private medConsultationRepository: Repository<MedConsultationEntity>,
     ) { }
 
     async create(consultation: Partial<MedConsultationEntity>): Promise<CreateMedConsultationDto> {
-        // Validate if personal exist
-        const exists = await this.MedConsultationRepository.findOne({
-            where: [
-                { consultation_id: consultation.consultation_id },
-            ],
-        });
+        // // Validate if personal exist
+        // const exists = await this.MedConsultationRepository.findOne({
+        //     where: [
+        //         { consultation_id: consultation.consultation_id },
+        //     ],
+        // });
+        // const exists = await this.medConsultationRepository.findOneBy({ consultation_id: consultation.consultation_id });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`El correlativo de consulta ya esta registrado`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`El correlativo de consulta ya esta registrado`, HttpStatus.CONFLICT);
+        // }
 
-        const newConsultation = this.MedConsultationRepository.create(consultation);
-        const response = await this.MedConsultationRepository.save(newConsultation);
+        const newConsultation = this.medConsultationRepository.create(consultation);
+        const response = await this.medConsultationRepository.save(newConsultation);
 
         //podría crearse otro Dto como en usuario
         return plainToInstance(CreateMedConsultationDto, response);
     }
 
     async findAll(): Promise<UpdateMedConsultationDto[]> {
-        const response = await this.MedConsultationRepository.find();
+        const response = await this.medConsultationRepository.find();
 
         return plainToInstance(UpdateMedConsultationDto, response);
     }
 
     async findOne(consultation_id: number): Promise<UpdateMedConsultationDto | null> {
-        const response = await this.MedConsultationRepository.findOneBy({ consultation_id });
+        const response = await this.medConsultationRepository.findOneBy({ consultation_id });
 
         return plainToInstance(UpdateMedConsultationDto, response);
     }
 
     async update(consultation_id: number, consultation: Partial<MedConsultationEntity>): Promise<UpdateMedConsultationDto> {
-        await this.MedConsultationRepository.update(consultation_id, consultation);
+        await this.medConsultationRepository.update(consultation_id, consultation);
 
-        const response = await this.MedConsultationRepository.findOneBy({ consultation_id });
+        const response = await this.medConsultationRepository.findOneBy({ consultation_id });
 
         return plainToInstance(UpdateMedConsultationDto, response);
     }
 
-    async remove(patient_id: number): Promise<void> {
-        await this.MedConsultationRepository.delete(patient_id);
+    async remove(consultation_id: number): Promise<void> {
+        await this.medConsultationRepository.delete(consultation_id);
     }
 
 }

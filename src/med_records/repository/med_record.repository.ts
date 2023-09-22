@@ -16,15 +16,15 @@ export class MedRecordRepository {
 
     async create(record: Partial<MedRecordEntity>): Promise<CreateMedRecordDto> {
         // Validate if personal exist
-        const exists = await this.MedRecordRepository.findOne({
-            where: [
-                { record_id: record.record_id },
-            ],
-        });
+        // const exists = await this.MedRecordRepository.findOne({
+        //     where: [
+        //         { record_id: record.record_id },
+        //     ],
+        // });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`El historial ya esta registrado`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`El historial ya esta registrado`, HttpStatus.CONFLICT);
+        // }
 
         const newRecord = this.MedRecordRepository.create(record);
         const response = await this.MedRecordRepository.save(newRecord);

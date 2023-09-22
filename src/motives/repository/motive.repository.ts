@@ -17,17 +17,17 @@ export class MotiveRepository {
     ) { }
 
     async create(motive: Partial<MotiveEntity>): Promise<CreateMotiveDto> {
-        // Validate if personal exist
-        // const exists = await this.RoleRepository.findOne({
+        
+        // const exists = await this.motiveRepository.findOne({
         //     where: [
-        //         { role_id: role.role_id },
+        //         { motive_id: motive.motive_id },
         //     ],
         // });
-        const exists = await this.motiveRepository.findOneBy({ motive_id: motive.motive_id });
+        // const exists = await this.motiveRepository.findOneBy({ motive_id: motive.motive_id });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`El correlativo de consulta ya esta registrado`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`El correlativo de consulta ya esta registrado`, HttpStatus.CONFLICT);
+        // }
 
         const newMotive = this.motiveRepository.create(motive);
         const response = await this.motiveRepository.save(newMotive);

@@ -14,15 +14,15 @@ export class UserRepository {
 
     async create(user: Partial<UserEntity>): Promise<ReadUserDto> {
         // Validate if user exist
-        const exists = await this.usersRepository.findOne({
-            where: [
-                { username: user.username },
-            ],
-        });
+        // const exists = await this.usersRepository.findOne({
+        //     where: [
+        //         { username: user.username },
+        //     ],
+        // });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`El usuario ya esta registrado`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`El usuario ya esta registrado`, HttpStatus.CONFLICT);
+        // }
 
         const newUser = this.usersRepository.create(user);
         const response = await this.usersRepository.save(newUser);

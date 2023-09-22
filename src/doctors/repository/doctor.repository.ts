@@ -17,15 +17,15 @@ export class DoctorRepository {
 //    async create(user: Partial<DoctorEntity>): Promise<ReadUserDto> {
     async create(medical: Partial<DoctorEntity>): Promise<CreateDoctorDto> {
         // Validate if personal exist
-        const exists = await this.doctorRepository.findOne({
-            where: [
-                { member_number: medical.member_number },
-            ],
-        });
+        // const exists = await this.doctorRepository.findOne({
+        //     where: [
+        //         { member_number: medical.member_number },
+        //     ],
+        // });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`El personal ya esta registrado`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`El personal ya esta registrado`, HttpStatus.CONFLICT);
+        // }
 
         const newDoctor = this.doctorRepository.create(medical);
         const response = await this.doctorRepository.save(newDoctor);

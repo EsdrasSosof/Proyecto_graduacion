@@ -13,14 +13,6 @@ export class MedConsultationEntity extends BaseEntity {
     })
     consultation_id: number;
 
-    @Column({
-        nullable: false,
-        type: 'varchar',
-        length: '120',
-        comment: 'razón o motivo de consulta',
-    })
-    reason: string;
-
     @CreateDateColumn({
         nullable: false,
         type: 'timestamp',

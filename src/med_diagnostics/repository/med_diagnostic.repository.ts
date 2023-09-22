@@ -16,15 +16,15 @@ export class MedDiagnosticRepository {
 
     async create(diagnostic: Partial<MedDiagnostictEntity>): Promise<CreateMedDiagnosticDto> {
         // Validate if personal exist
-        const exists = await this.MedDiagnosticRepository.findOne({
-            where: [
-                { correlative_id: diagnostic.correlative_id },
-            ],
-        });
+        // const exists = await this.MedDiagnosticRepository.findOne({
+        //     where: [
+        //         { correlative_id: diagnostic.correlative_id },
+        //     ],
+        // });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`El correlativo ya esta registrado`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`El correlativo ya esta registrado`, HttpStatus.CONFLICT);
+        // }
 
         const newDiagnostic = this.MedDiagnosticRepository.create(diagnostic);
         const response = await this.MedDiagnosticRepository.save(newDiagnostic);

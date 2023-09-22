@@ -16,15 +16,15 @@ export class MedPresciptionRepository {
 
     async create(prescription: Partial<MedPresciptionEntity>): Promise<CreateMedPresciptionDto> {
         // Validate if personal exist
-        const exists = await this.MedPresciptionRepository.findOne({
-            where: [
-                { prescription_id: prescription.prescription_id },
-            ],
-        });
+        // const exists = await this.MedPresciptionRepository.findOne({
+        //     where: [
+        //         { prescription_id: prescription.prescription_id },
+        //     ],
+        // });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`La prescipción ya esta registrada`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`La prescipción ya esta registrada`, HttpStatus.CONFLICT);
+        // }
 
         const newPresciption = this.MedPresciptionRepository.create(prescription);
         const response = await this.MedPresciptionRepository.save(newPresciption);

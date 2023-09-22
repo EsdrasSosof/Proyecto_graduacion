@@ -21,11 +21,11 @@ export class SpecializationRepository {
         //         { specialization_id: specialization.specialization_id },
         //     ],
         // });
-        const exists = await this.specializationRepository.findOneBy({ specialization_id: specialization.specialization_id });
+        // const exists = await this.specializationRepository.findOneBy({ specialization_id: specialization.specialization_id });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`El personal ya esta registrado`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`El personal ya esta registrado`, HttpStatus.CONFLICT);
+        // }
 
         const newSpeciality = this.specializationRepository.create(specialization);
         const response = await this.specializationRepository.save(newSpeciality);

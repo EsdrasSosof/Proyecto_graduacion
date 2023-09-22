@@ -17,15 +17,15 @@ export class DetailRepository {
 
     async create(detail: Partial<DetailEntity>): Promise<CreateDetailDto> {
         // Validate if personal exist
-        const exists = await this.DetailRepository.findOne({
-            where: [
-                { detail_id: detail.detail_id },
-            ],
-        });
+        // const exists = await this.DetailRepository.findOne({
+        //     where: [
+        //         { detail_id: detail.detail_id },
+        //     ],
+        // });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`El detalle ya esta registrada`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`El detalle ya esta registrada`, HttpStatus.CONFLICT);
+        // }
 
         const newDetail = this.DetailRepository.create(detail);
         const response = await this.DetailRepository.save(newDetail);

@@ -22,11 +22,11 @@ export class RoleRepository {
         //         { role_id: role.role_id },
         //     ],
         // });
-        const exists = await this.roleRepository.findOneBy({ role_id: role.role_id });
+        // const exists = await this.roleRepository.findOneBy({ role_id: role.role_id });
 
-        if (exists !== null) { // Exists
-            throw new HttpException(`El correlativo de consulta ya esta registrado`, HttpStatus.CONFLICT);
-        }
+        // if (exists !== null) { // Exists
+        //     throw new HttpException(`El correlativo de consulta ya esta registrado`, HttpStatus.CONFLICT);
+        // }
 
         const newRole = this.roleRepository.create(role);
         const response = await this.roleRepository.save(newRole);
