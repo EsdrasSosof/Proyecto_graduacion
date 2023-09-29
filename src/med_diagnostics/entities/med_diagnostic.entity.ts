@@ -2,6 +2,7 @@ import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, On
 import { TABLE_NAME } from '../../configuration/constants';
 import { MedPresciptionEntity } from '../../med_presciptions/entities';
 import { DoctorEntity } from '../../doctors/entities';
+import { MedConsultationEntity } from '../../med_consultations/entities';
 
 
 @Entity({ name: TABLE_NAME.MEDDIAGNOSTIC })
@@ -50,10 +51,17 @@ export class MedDiagnostictEntity extends BaseEntity {
     })
     date_updated: Date;
 
+        /*
+     * RELATIONS MED-CONSULTATIONS
+     */
+    @OneToOne((type) => MedConsultationEntity, {cascade: true, eager: true})
+    @JoinColumn({ name: 'consultation_id' })
+    consultation_id: MedConsultationEntity;
+
     /*
      * RELATIONS MED_PRESCRIPTION
      */
-    @OneToOne((type) => MedPresciptionEntity, {cascade: true, eager: true})
-    @JoinColumn({ name: 'prescription_id' })
-    prescription_id: MedPresciptionEntity;
+    // @OneToOne((type) => MedPresciptionEntity, {cascade: true, eager: true})
+    // @JoinColumn({ name: 'prescription_id' })
+    // prescription_id: MedPresciptionEntity;
 }

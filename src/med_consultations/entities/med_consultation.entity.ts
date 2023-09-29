@@ -46,19 +46,19 @@ export class MedConsultationEntity extends BaseEntity {
     /*
      * RELATIONS MED_DIAGNOSTIC
      */
-    @OneToOne((type) => MedDiagnostictEntity, {cascade: true, eager: true})
-    @JoinColumn({ name: 'correlative_id' })
-    correlative_id: MedDiagnostictEntity;
+    // @OneToOne((type) => MedDiagnostictEntity, {cascade: true, eager: true})
+    // @JoinColumn({ name: 'correlative_id' })
+    // correlative_id: MedDiagnostictEntity;
 
     /**
-     * RELATIONS MED_CONSULTATION
+     * RELATIONS MED_PATIENT
      */
     @ManyToOne((type) => MedPatientEntity, {cascade: true, eager: true})
     @JoinColumn({ name: 'patient_id' })
     patient_id: MedPatientEntity;
 
     /**
-     * RELATIONS MED_CONSULTATION
+     * RELATIONS MOTIVE
      */
     @ManyToOne((type) => MotiveEntity, {cascade: true, eager: true})
     @JoinColumn({ name: 'motive_id' })

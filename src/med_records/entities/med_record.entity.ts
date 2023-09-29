@@ -2,6 +2,8 @@ import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, OneToOne, Pri
 import { TABLE_NAME } from '../../configuration/constants';
 import { MedPatientEntity } from '../../med_patients/entities';
 import { MedConsultationEntity } from '../../med_consultations/entities';
+import { MedDiagnostictEntity } from '../../med_diagnostics/entities';
+import { MedPresciptionEntity } from '../../med_presciptions/entities';
 
 
 @Entity({ name: TABLE_NAME.MEDRECORD })
@@ -33,10 +35,25 @@ export class MedRecordEntity extends BaseEntity {
     @JoinColumn({ name: 'patient_id' })
     patient_id: MedPatientEntity;
 
-        /**
-     * RELATIONS
+    /**
+     * RELATIONS MED-CONSULTATION
      */
     @OneToOne((type) => MedConsultationEntity, {cascade: true, eager: true})
     @JoinColumn({ name: 'consultation_id' })
     consultation_id: MedConsultationEntity;
+
+    /**
+     * RELATIONS MED-DIADNÓSTIC
+     */
+    @OneToOne((type) => MedDiagnostictEntity, {cascade: true, eager: true})
+    @JoinColumn({ name: 'correlative_id' })
+    correlative_id: MedDiagnostictEntity;
+
+    /**
+     * RELATIONS MED-PRESCRIPTION
+     */
+    @OneToOne((type) => MedPresciptionEntity, {cascade: true, eager: true})
+    @JoinColumn({ name: 'prescription_id' })
+    prescription_id: MedPresciptionEntity;
+
 }
