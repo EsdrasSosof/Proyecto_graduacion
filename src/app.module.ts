@@ -19,6 +19,7 @@ import { MedicinesModule } from './medicines/medicines.module';
 import { RolesModule } from './roles/roles.module';
 import { TypologiesModule } from './typologies/typologies.module';
 import { MotivesModule } from './motives/motives.module';
+import { GraphConsultationModule } from './graph-consultation/graph-consultation.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { MotivesModule } from './motives/motives.module';
     RolesModule,
     TypologiesModule,
     MotivesModule,
+    GraphConsultationModule,
   ],
   controllers: [AppController],
   providers: [
