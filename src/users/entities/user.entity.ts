@@ -22,7 +22,7 @@ export class UserEntity extends BaseEntity {
     @Column({
         nullable: false,
         type: 'varchar',
-        length: '25',
+        length: '100',
         comment: 'User password',
     })
     password: string;
