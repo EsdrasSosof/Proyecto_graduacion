@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { MedRecordsService } from './med_records.service';
 import { CreateMedRecordDto } from './dto/create-med_record.dto';
 import { UpdateMedRecordDto } from './dto/update-med_record.dto';
+import { FechaRangeDto } from './dto/fecha-rangomed_record.dto';
+import { MedRecordEntity } from './entities';
 
 @Controller('med-records')
 export class MedRecordsController {
@@ -30,5 +32,11 @@ export class MedRecordsController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.medRecordsService.remove(+id);
+  }
+
+  @Get('search')
+  async searchByDateRange(@Query() fechaRangeDto: FechaRangeDto) {
+    const records = await this.medRecordsService.searchByDateRange(fechaRangeDto);
+    return records; // Devolverá los registros encontrados en JSON.
   }
 }

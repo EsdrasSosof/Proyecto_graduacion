@@ -20,6 +20,8 @@ import { RolesModule } from './roles/roles.module';
 import { TypologiesModule } from './typologies/typologies.module';
 import { MotivesModule } from './motives/motives.module';
 import { GraphConsultationModule } from './graph-consultation/graph-consultation.module';
+import { ReporteHistorialModule } from './reporte-historial/reporte-historial.module';
+import { ObtenerDatoshistorialModule } from './obtener-datoshistorial/obtener-datoshistorial.module';
 
 @Module({
   imports: [
@@ -47,6 +49,8 @@ import { GraphConsultationModule } from './graph-consultation/graph-consultation
     TypologiesModule,
     MotivesModule,
     GraphConsultationModule,
+    ReporteHistorialModule,
+    ObtenerDatoshistorialModule,
   ],
   controllers: [AppController],
   providers: [
