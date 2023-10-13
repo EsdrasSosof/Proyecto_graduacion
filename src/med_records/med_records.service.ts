@@ -69,17 +69,21 @@ export class MedRecordsService {
         await this.medRecordRepository.delete(record_id);
     }
 
-    async searchByDateRange(fechaRangeDto: FechaRangeDto): Promise<MedRecordEntity[]> {
+    async searchByDateRange(fechaRangeDto: any): Promise<MedRecordEntity[]> {
         const { fechaInicial, fechaFinal } = fechaRangeDto;
-        //console.log(fechaInicial, fechaFinal);
-    
+        // console.log(fechaInicial, fechaFinal);
+        // console.log(typeof fechaFinal);
+
+        try {
         const records = await this.medRecordRepository.find({
           where: {
             date_created: Between(fechaInicial, fechaFinal),
           },
         });
-    
-        return records;
+          return records;
+        }catch(err){
+          console.log(err);
+        }
     }
 
     //método para utilizar una sola relación

@@ -34,8 +34,9 @@ export class MedRecordsController {
     return this.medRecordsService.remove(+id);
   }
 
-  @Get('search')
-  async searchByDateRange(@Query() fechaRangeDto: FechaRangeDto) {
+  @Post('search')
+  async searchByDateRange(@Body() fechaRangeDto: any) {
+    console.log("fecha?",fechaRangeDto);
     const records = await this.medRecordsService.searchByDateRange(fechaRangeDto);
     return records; // Devolverá los registros encontrados en JSON.
   }
