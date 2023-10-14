@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Res } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Res } from '@nestjs/common';
 import { Response } from 'express';
 import { ReporteHistorialService } from './reporte-historial.service';
 
@@ -32,4 +32,18 @@ export class ReporteHistorialController {
 
     res.end(buffer);
   }
+
+  // @Post()
+  // async generatePDF(@Body() body: { record_id: number }, @Res() res: Response): Promise<void> {
+  //   const { record_id } = body;
+  //   const buffer = await this.reporteHistorialService.generarPDF(record_id);
+
+  //   res.set({
+  //     'Content-Type': 'application/pdf',
+  //     'Content-Disposition': 'attachment; filename=example.pdf',
+  //     'Content-Length': buffer.length,
+  //   });
+
+  //   res.end(buffer);
+  // }
 }
