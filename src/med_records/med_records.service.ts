@@ -38,15 +38,15 @@ export class MedRecordsService {
     private medRecordRepository: Repository<MedRecordEntity>,
   ) {}
 
-  async create(record: Partial<MedRecordEntity>): Promise<CreateMedRecordDto> {
-    const newRecord = this.medRecordRepository.create(record);
-    const response = await this.medRecordRepository.save(newRecord);
+    async create(record: Partial<MedRecordEntity>): Promise<CreateMedRecordDto> {
+      const newRecord = this.medRecordRepository.create(record);
+      const response = await this.medRecordRepository.save(newRecord);
 
-    return plainToInstance(CreateMedRecordDto, response);
-}
+      return plainToInstance(CreateMedRecordDto, response);
+    }
 
     async findAll(): Promise<UpdateMedRecordDto[]> {
-        const response = await this.medRecordRepository.find({ relations: ['MedPatientEntity']});
+        const response = await this.medRecordRepository.find({ relations: ['patient_id']});
 
         return plainToInstance(UpdateMedRecordDto, response);
     }

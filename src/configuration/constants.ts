@@ -4,11 +4,11 @@ import { config } from 'dotenv';
 config();
 
 const configService = new ConfigService();
-const PREFIX = configService.get('DB_PREFIX');
+const PREFIX = process.env.DB_PREFIX || configService.get('DB_PREFIX');
 
 export const CONSTANTS = {
-    SECRET: configService.get('JWT_SECRET'),
-    EXPIRE: configService.get('JWT_EXPIRE'),
+    SECRET: process.env.JWT_SECRET || configService.get('JWT_SECRET'),
+    EXPIRE: process.env.JWT_EXPIRE || configService.get('JWT_EXPIRE'),
 };
 
 export const TABLE_NAME = {
